@@ -80,7 +80,7 @@ export namespace SVG {
      * @param {string} element - The name of the SVG element to create.
      * @returns {object} The created SVG child element.
      */
-    create(element: string): GenSVG {
+    create(element: string | any): GenSVG {
       this.child = new GenSVG(element);
 
       if (element === "defs") {
@@ -339,7 +339,7 @@ export namespace SVG {
      * @param {object} attributes - An object of attribute value pairs.
      * @returns {object} itself.
      */
-    set(attributes: { [key: string]: string }) {
+    set(attributes: { [key: string]: string } | any) {
       for (let key in attributes) {
         let prop = key.replace(/_/g, "-");
 

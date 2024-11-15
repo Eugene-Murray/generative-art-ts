@@ -107,7 +107,7 @@ export namespace SVGUtils {
      * @param {boolean} [float = false] - Set to true to return a floating point number.
      * @returns {*} The randomised number or array item.
      */
-    static random(min: number | [] = 0, max: number = 1, float: boolean = false): number | [] {
+    static random(min: number | string[] = 0, max: number = 1, float: boolean = false): number | string[] | string {
       if (Array.isArray(arguments[0])) {
         let arr = arguments[0];
         return arr[Math.round(Math.random() * (arr.length - 1))];
