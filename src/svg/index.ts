@@ -1,4 +1,4 @@
-export * from './gen-svg-utils';
-export * from './gen-svg';
-export * from './noise-algo';
+export * from './gen-art-svg-utils';
+export * from './gen-art-svg';
+export * from './gen-art-noise-algo';
 
