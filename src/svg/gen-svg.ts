@@ -44,8 +44,10 @@ export namespace SVG {
      * @param {node} node - A HTML or SVG parent node.
      * @returns {object} itself.
      */
-    addTo(node: HTMLElement): void {
+    addTo(node: HTMLElement): GenSVG {
       node.appendChild(this.element);
+
+      return this;
     }
 
     /**
@@ -98,7 +100,7 @@ export namespace SVG {
      * @param {number} [curveFactor = 1] - 0 means that points connected by straight lines. Default is 1.
      * @returns {object} The created path.
      */
-    createCurve(points: [][], curveFactor: number = 1): GenSVG {
+    createCurve(points: any, curveFactor: number = 1): GenSVG {
       let path = new GenSVG("path");
 
       points = points.flat();
@@ -188,7 +190,7 @@ export namespace SVG {
       for (let i = 0; i < colours.length; i += 1) {
         gradient.create("stop").set({
           stop_color: colours[i],
-          offset: (i * (100 / (colours.length - 1))) / 100,
+          offset: String((i * (100 / (colours.length - 1))) / 100),
         });
       }
 
@@ -213,8 +215,8 @@ export namespace SVG {
       let pattern = new GenSVG("pattern");
       pattern.set({
         id: id,
-        x: 0,
-        y: 0,
+        x: String(0),
+        y: String(0),
         width: width,
         height: height,
         patternUnits: "userSpaceOnUse",
@@ -287,7 +289,7 @@ export namespace SVG {
       cx = cx === null ? c.x : cx;
       cy = cy === null ? c.y : cy;
 
-      t.setRotate(angle, cx, cy);
+      t.setRotate(angle, cx!, cy!);
 
       this.addTransform(t);
 

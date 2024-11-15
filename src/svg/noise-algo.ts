@@ -3,7 +3,7 @@
  *
  * With thanks to Joe Iddon. https://github.com/joeiddon/perlin
  */
-export namespace SVG.Utils {
+export namespace SVGNoiseUtils {
   export class Noise {
     grad: { [key: string]: { x: number; y: number } };
     cache: { [key: string]: number };

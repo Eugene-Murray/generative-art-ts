@@ -1,5 +1,5 @@
-export namespace SVG.Utils {
-  export class GenHelperService {
+export namespace SVGUtils {
+  export class HelperService {
     /**
      * Return true if the supplied % is higher than a randomised %. If two arguments supplied, they are interpreted as odds.
      * 

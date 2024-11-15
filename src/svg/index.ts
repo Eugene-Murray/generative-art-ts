@@ -1,3 +1,4 @@
-//import { SVG } from "./gen-helper-service";
+export * from './gen-helper-service';
+export * from './gen-svg';
+export * from './noise-algo';
 
-//export SVG.Utils.Noise;
