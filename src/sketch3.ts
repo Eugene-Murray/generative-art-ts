@@ -1,7 +1,7 @@
-import { SVG } from "./svg";
+import { GenArtSVG } from "./svg";
 
 // Parent SVG.
-const svg = new SVG.GenSVG().addTo(document.getElementById('sketch3')!);
+const svg = new GenArtSVG.Sketch().addTo(document.getElementById('sketch3')!);
 
 // Viewport and viewBox (1:1 aspect ratio).
 const svgSize = Math.min(window.innerWidth, window.innerHeight);

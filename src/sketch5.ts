@@ -1,7 +1,7 @@
-import { SVG, SVGNoiseUtils, SVGUtils } from "./svg";
+import { GenArtSVG, GenArtSVGNoiseAlgo, GenArtSVGUtils } from "./svg";
 
 // Parent SVG.
-const svg = new SVG.GenSVG().addTo(document.getElementById('sketch5')!);
+const svg = new GenArtSVG.Sketch().addTo(document.getElementById('sketch5')!);
 
 // Viewport and viewBox (1:1 aspect ratio).
 const svgSize = Math.min(window.innerWidth, window.innerHeight);
@@ -21,7 +21,7 @@ svg.create('rect').set({
 });
 
 // Create our noise, the noise x and y co-ordinates, and noise speed.
-let noise = new SVGNoiseUtils.Noise();
+let noise = new GenArtSVGNoiseAlgo.Noise();
 let nX = 0, nY = 0;
 let noiseSpeed = 0.05;
 
@@ -39,11 +39,11 @@ for (let x = 0; x < gridSize; x += increment) {
     let noiseValue = noise.get(nX, nY);
 
     // Map the noise value to a useful range.
-    noiseValue = SVGUtils.HelperService.map(noiseValue, -1, 1, 0, 100, false);
+    noiseValue = GenArtSVGUtils.Helpers.map(noiseValue, -1, 1, 0, 100, false);
 
     // Create text displaying either 0 or 1 (50% chance).
     let text = noiseGrid.create('text');
-    text.content(SVGUtils.HelperService.chance() ? '1' : '0');
+    text.content(GenArtSVGUtils.Helpers.chance() ? '1' : '0');
     text.set({
       x: x, y: y, fill: `hsl(120 20% ${noiseValue}%)`
     });

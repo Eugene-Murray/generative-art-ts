@@ -3,7 +3,7 @@
  *
  * With thanks to Joe Iddon. https://github.com/joeiddon/perlin
  */
-export namespace SVGNoiseUtils {
+export namespace GenArtSVGNoiseAlgo {
   export class Noise {
     grad: { [key: string]: { x: number; y: number } };
     cache: { [key: string]: number };

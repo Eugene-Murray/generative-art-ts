@@ -1,4 +1,4 @@
-import { SVG } from "./svg";
+import { GenArtSVG } from "./svg";
 
 /**
  * Gets a random number between a minimum and maximum value.
@@ -20,14 +20,14 @@ const random = (min: number, max: number, integer = true) =>{
   }
   
   // Create our parent SVG element and attach it to the element with id 'container'.
-  const svg2 = new SVG.GenSVG();
-  svg2.addTo(document.getElementById('sketch2')!);
+  const svg = new GenArtSVG.Sketch();
+  svg.addTo(document.getElementById('sketch2')!);
   
   // Set the width and height of the viewBox (the units we work in) and the displayed size of the SVG.
-  svg2.set({ viewBox: '0 0 1000 1000', width: svgSize.toString(), height: svgSize.toString() });
+  svg.set({ viewBox: '0 0 1000 1000', width: svgSize.toString(), height: svgSize.toString() });
   
   // Create a background layer - a rectangle the full size of our viewBox.
-  const rect = svg2.create('rect');
+  const rect = svg.create('rect');
   rect.set({ x: '0', y: '0', width: '1000', height: '1000', fill: bgColor });
     
   // Run a loop a random number of times to create our ellipses.
@@ -48,7 +48,7 @@ const random = (min: number, max: number, integer = true) =>{
     }
   
     // Create our ellipse.
-    let ellipse = svg2.create('ellipse');
+    let ellipse = svg.create('ellipse');
     ellipse.set({
       cx: center.toString(),
       cy: center.toString(),

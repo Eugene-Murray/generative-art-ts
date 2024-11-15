@@ -1,9 +1,9 @@
-export namespace SVG {
-  export class GenSVG {
+export namespace GenArtSVG {
+  export class Sketch {
     element: any;//SVGGraphicsElement | SVGTransformList | EventTarget;
     cursorX: number | null = null;
     cursorY: number | null = null;
-    child: GenSVG | null = null;
+    child: Sketch | null = null;
 
     /**
      * Create an SVG element.
@@ -44,7 +44,7 @@ export namespace SVG {
      * @param {node} node - A HTML or SVG parent node.
      * @returns {object} itself.
      */
-    addTo(node: HTMLElement): GenSVG {
+    addTo(node: HTMLElement): Sketch {
       node.appendChild(this.element);
 
       return this;
@@ -80,8 +80,8 @@ export namespace SVG {
      * @param {string} element - The name of the SVG element to create.
      * @returns {object} The created SVG child element.
      */
-    create(element: string | any): GenSVG {
-      this.child = new GenSVG(element);
+    create(element: string | any): Sketch {
+      this.child = new Sketch(element);
 
       if (element === "defs") {
         this.child.element = this.defsCheck();
@@ -100,8 +100,8 @@ export namespace SVG {
      * @param {number} [curveFactor = 1] - 0 means that points connected by straight lines. Default is 1.
      * @returns {object} The created path.
      */
-    createCurve(points: any, curveFactor: number = 1): GenSVG {
-      let path = new GenSVG("path");
+    createCurve(points: any, curveFactor: number = 1): Sketch {
+      let path = new Sketch("path");
 
       points = points.flat();
 
@@ -147,10 +147,10 @@ export namespace SVG {
      * @param {string} id - The id. Reference this when applying the filter.
      * @returns {object} The created filter.
      */
-    createFilter(id: string): GenSVG {
+    createFilter(id: string): Sketch {
       this.isMainSVG();
 
-      let filter = new GenSVG("filter");
+      let filter = new Sketch("filter");
       filter.set({
         id: id,
         x: "-25%",
@@ -177,10 +177,10 @@ export namespace SVG {
      * @param {number} [rotation = 45] - The angle of rotation. Ignored if gradient is radial.
      * @returns {object} The created gradient.
      */
-    createGradient(id: string, type: string, colours: [], rotation: number = 45): GenSVG {
+    createGradient(id: string, type: string, colours: [], rotation: number = 45): Sketch {
       this.isMainSVG();
 
-      let gradient = new GenSVG(`${type}Gradient`);
+      let gradient = new Sketch(`${type}Gradient`);
       gradient.set({ id: id });
 
       if (type === "linear") {
@@ -209,10 +209,10 @@ export namespace SVG {
      * @param {number} height - The height of the pattern.
      * @returns {object} The created pattern element.
      */
-    createPattern(id: string, width: string, height: string): GenSVG {
+    createPattern(id: string, width: string, height: string): Sketch {
       this.isMainSVG();
 
-      let pattern = new GenSVG("pattern");
+      let pattern = new Sketch("pattern");
       pattern.set({
         id: id,
         x: String(0),
@@ -395,7 +395,7 @@ export namespace SVG {
      * @returns {object} An SVGTransform object.
      */
     private createTransform(): SVGTransform {
-      let root = new GenSVG();
+      let root = new Sketch();
       return root.element.createSVGTransform();
     }
 
@@ -409,7 +409,7 @@ export namespace SVG {
       if (document.querySelector("defs")) {
         defs = document.querySelector("defs");
       } else {
-        defs = new GenSVG("defs").element;
+        defs = new Sketch("defs").element;
         this.element.prepend(defs);
       }
       return defs;
