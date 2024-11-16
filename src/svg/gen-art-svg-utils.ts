@@ -122,5 +122,17 @@ export namespace GenArtSVGUtils {
     }
   
   }
+
+  export enum SVGShapes {
+    SVG = 'svg',
+    PATH = 'path',
+    CIRCLE = 'circle',
+    ELLIPSE = 'ellipse',
+    LINE = 'line',
+    POLYGON = 'polygon',
+    POLYLINE = 'polyline',
+    RECTANGLE = 'rect',
+    GROUP = 'g'
+  }
 }
 

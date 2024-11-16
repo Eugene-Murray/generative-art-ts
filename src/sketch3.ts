@@ -1,4 +1,4 @@
-import { GenArtSVG } from "./svg";
+import { GenArtSVG, GenArtSVGUtils } from "./svg";
 
 // Parent SVG.
 const svg = new GenArtSVG.Sketch().addTo(document.getElementById('sketch3')!);
@@ -33,7 +33,7 @@ for (let i = 1; i <= 6; i += 1) {
 }
 
 // Create a subtle outline to frame the circle sets.
-svg.create('circle').set({
+svg.create(GenArtSVGUtils.SVGShapes.CIRCLE).set({
   cx: '500', cy: '500', r: '320', fill: 'none',
   stroke: '#aaffee', stroke_width: '2', stroke_opacity: '0.1'
 });

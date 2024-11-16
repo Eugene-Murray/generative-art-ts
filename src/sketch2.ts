@@ -1,4 +1,4 @@
-import { GenArtSVG } from "./svg";
+import { GenArtSVG, GenArtSVGUtils } from "./svg";
 
 /**
  * Gets a random number between a minimum and maximum value.
@@ -48,7 +48,7 @@ const random = (min: number, max: number, integer = true) =>{
     }
   
     // Create our ellipse.
-    let ellipse = svg.create('ellipse');
+    let ellipse = svg.create(GenArtSVGUtils.SVGShapes.ELLIPSE);
     ellipse.set({
       cx: center.toString(),
       cy: center.toString(),

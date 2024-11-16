@@ -1,3 +1,5 @@
+import { GenArtSVGUtils } from "./gen-art-svg-utils";
+
 export namespace GenArtSVG {
   export class Sketch {
     element: any;//SVGGraphicsElement | SVGTransformList | EventTarget;
@@ -11,7 +13,7 @@ export namespace GenArtSVG {
      * @param {string} [element] - The name of the SVG element to create.
      * @param {string} [namespace] - The namespace url to reference.
      */
-    constructor(element: string = "svg", namespace: string = "http://www.w3.org/2000/svg") {
+    constructor(element: string | GenArtSVGUtils.SVGShapes = GenArtSVGUtils.SVGShapes.SVG, namespace: string = "http://www.w3.org/2000/svg") {
       this.element = document.createElementNS(namespace, element) as SVGGraphicsElement;
       this.cursorX = null;
       this.cursorY = null;
@@ -101,7 +103,7 @@ export namespace GenArtSVG {
      * @returns {object} The created path.
      */
     createCurve(points: any, curveFactor: number = 1): Sketch {
-      let path = new Sketch("path");
+      let path = new Sketch(GenArtSVGUtils.SVGShapes.PATH);
 
       points = points.flat();
 
@@ -150,7 +152,7 @@ export namespace GenArtSVG {
     createFilter(id: string): Sketch {
       this.isMainSVG();
 
-      let filter = new Sketch("filter");
+      let filter = new Sketch('filter');
       filter.set({
         id: id,
         x: "-25%",
@@ -212,7 +214,7 @@ export namespace GenArtSVG {
     createPattern(id: string, width: string, height: string): Sketch {
       this.isMainSVG();
 
-      let pattern = new Sketch("pattern");
+      let pattern = new Sketch('pattern');
       pattern.set({
         id: id,
         x: String(0),
@@ -409,7 +411,7 @@ export namespace GenArtSVG {
       if (document.querySelector("defs")) {
         defs = document.querySelector("defs");
       } else {
-        defs = new Sketch("defs").element;
+        defs = new Sketch('defs').element;
         this.element.prepend(defs);
       }
       return defs;

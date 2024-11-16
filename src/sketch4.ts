@@ -8,7 +8,7 @@ const svg = new GenArtSVG.Sketch().addTo(document.getElementById('sketch4')!);
 svg.set({ width: svgSize.toString(), height: svgSize.toString(), viewBox: '0 0 1000 1000' });
 
 // Background.
-svg.create('rect').set({
+svg.create(GenArtSVGUtils.SVGShapes.RECTANGLE).set({
   x: '0', y: '0', width: '1000', height: '1000', fill: '#181818'
 });
 

@@ -16,7 +16,7 @@ svg.create('style').content(`
 `);
 
 // Background.
-svg.create('rect').set({
+svg.create(GenArtSVGUtils.SVGShapes.RECTANGLE).set({
   x: 0, y: 0, width: 1000, height: 1000, fill: '#181818'
 });
 
@@ -26,7 +26,7 @@ let nX = 0, nY = 0;
 let noiseSpeed = 0.05;
 
 // Set some grid-related variables.
-let noiseGrid = svg.create('g');
+let noiseGrid = svg.create(GenArtSVGUtils.SVGShapes.GROUP);
 let gridSize = 1000;
 let rows = 50;
 let increment = gridSize / rows;
